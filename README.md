@@ -49,25 +49,16 @@ Este comando generará los archivos `.js` correspondientes a partir de los archi
 
 ## 2. Ejecución del servidor
 
-### Ejecutar el archivo `oopspam.js`
+### Ejecutar el archivo `server.js`
 
-Después de transpilar los archivos, puedes ejecutar el servidor para la API de OOPSpam. Ejecuta el siguiente comando para iniciar el servidor:
+Después de transpilar los archivos, puedes ejecutar el servidor para la API de OOPSpam y SpamCheck. Ejecuta el siguiente comando para iniciar el servidor:
 
 ```bash
-node oopspam.js
+node dist/server.js
 ```
 
 Esto iniciará el servidor en el puerto 3000 (o el que hayas configurado). Ahora estará listo para recibir solicitudes POST en el endpoint configurado.
 
-### Ejecutar el archivo `spamCheck.js`
-
-Del mismo modo, puedes ejecutar el servidor para la API de **SpamCheck**. Usa este comando:
-
-```bash
-node spamCheck.js
-```
-
----
 
 ## 3. Probar las APIs en Postman
 
