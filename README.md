@@ -197,6 +197,12 @@ Dependiendo del contenido enviado, las APIs te devolverán una respuesta JSON in
      - Retención de logs (opcional): 9 meses
 
 ---
+## Documentación
+
+- **OOPSpam**: https://www.oopspam.com/docs
+- **SpamCheck**: https://spamcheck.ai/docs
+   - **General**: https://docs.spamcheck.ai
+   - **API**: https://app.spamcheck.ai/api_docs
 
 
 
