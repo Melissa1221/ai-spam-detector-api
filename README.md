@@ -135,3 +135,69 @@ Una vez que el servidor esté en ejecución, puedes probar los endpoints usando 
 
 Dependiendo del contenido enviado, las APIs te devolverán una respuesta JSON indicando si el mensaje es spam o no, y qué factores influyeron en la decisión.
 
+---
+
+## Sección de precios
+
+### Planes de **SpamCheck**:
+
+1. **Free Plan**
+   - **Precio**: $0/mes
+   - **Incluye**:
+     - 100 verificaciones de spam
+     - Soporte por correo electrónico
+     - Retención personalizada
+     - Modelo de SpamCheck
+
+2. **Startup Plan**
+   - **Precio**: \$41/mes (facturado anualmente) o \$49/mes (mensualmente)
+   - **Incluye**:
+     - 85,000 verificaciones de spam
+     - Soporte por correo electrónico
+     - Retención personalizada
+     - Modelo de SpamCheck
+
+---
+
+### Planes de **OOPSpam**:
+
+1. **Freelance Plan**
+   - **Precio**: $40.83/mes (facturado anualmente)
+   - **Incluye**:
+     - 100,000 llamadas API
+     - Vigilancia de reputación de dominios
+     - API avanzada de protección contra spam
+     - API de reputación de dominios
+     - Sitios web ilimitados
+     - Política de no registro de logs
+     - Retención de logs (opcional): 3 meses
+
+2. **Agency Plan**
+   - **Precio**: $65.8/mes (facturado anualmente)
+   - **Incluye**:
+     - 300,000 llamadas API
+     - Vigilancia de reputación de dominios
+     - API avanzada de protección contra spam
+     - API de reputación de dominios
+     - Sitios web ilimitados
+     - Política de no registro de logs
+     - Retención de logs (opcional): 6 meses
+
+3. **Business Plan**
+   - **Precio**: $215.8/mes (facturado anualmente)
+   - **Incluye**:
+     - 1,000,000 llamadas API
+     - Vigilancia de reputación de dominios
+     - API avanzada de protección contra spam
+     - API de reputación de dominios
+     - Sitios web ilimitados
+     - Política de no registro de logs
+     - Retención de logs (opcional): 9 meses
+
+---
+
+
+
+
+
+
