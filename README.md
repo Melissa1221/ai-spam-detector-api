@@ -140,6 +140,7 @@ Dependiendo del contenido enviado, las APIs te devolverán una respuesta JSON in
 ## Sección de precios
 
 ### Planes de **SpamCheck**:
+**web**: https://spamcheck.ai
 
 1. **Free Plan**
    - **Precio**: $0/mes
@@ -161,6 +162,7 @@ Dependiendo del contenido enviado, las APIs te devolverán una respuesta JSON in
 
 ### Planes de **OOPSpam**:
 
+**web**: https://www.oopspam.com
 1. **Freelance Plan**
    - **Precio**: $40.83/mes (facturado anualmente)
    - **Incluye**:
