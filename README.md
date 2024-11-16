@@ -1,6 +1,4 @@
-### Actualización del README
 
-```markdown
 # README: Configuración y pruebas de APIs OOPSpam y SpamCheck con TypeScript
 
 ## Introducción
@@ -103,16 +101,7 @@ Este endpoint combina las evaluaciones de **OOPSpam** y **SpamCheck** para deter
 }
 ```
 
----
 
-## Conclusión
-
-Este proyecto integra las APIs de **OOPSpam** y **SpamCheck** para evaluar contenido de mensajes en busca de spam. Con la configuración adecuada, puedes implementar un sistema robusto para proteger tus aplicaciones de contenido sospechoso.
-
-<<<<<<< HEAD
-Para cualquier duda o problema, revisa los logs del servidor o los datos de respuesta de las APIs en Postman.
-```
-=======
 ---
 
 ## Sección de precios
@@ -181,10 +170,3 @@ Para cualquier duda o problema, revisa los logs del servidor o los datos de resp
 - **SpamCheck**: https://spamcheck.ai/docs
    - **General**: https://docs.spamcheck.ai
    - **API**: https://app.spamcheck.ai/api_docs
-
-
-
-
-
-
->>>>>>> 9e43856d8635b002eea2de1760fac657faec386d
