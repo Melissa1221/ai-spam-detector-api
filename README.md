@@ -109,5 +109,82 @@ Este endpoint combina las evaluaciones de **OOPSpam** y **SpamCheck** para deter
 
 Este proyecto integra las APIs de **OOPSpam** y **SpamCheck** para evaluar contenido de mensajes en busca de spam. Con la configuración adecuada, puedes implementar un sistema robusto para proteger tus aplicaciones de contenido sospechoso.
 
+<<<<<<< HEAD
 Para cualquier duda o problema, revisa los logs del servidor o los datos de respuesta de las APIs en Postman.
 ```
+=======
+---
+
+## Sección de precios
+
+### Planes de **SpamCheck**:
+**web**: https://spamcheck.ai
+
+1. **Free Plan**
+   - **Precio**: $0/mes
+   - **Incluye**:
+     - 100 verificaciones de spam
+     - Soporte por correo electrónico
+     - Retención personalizada
+     - Modelo de SpamCheck
+
+2. **Startup Plan**
+   - **Precio**: \$41/mes (facturado anualmente) o \$49/mes (mensualmente)
+   - **Incluye**:
+     - 85,000 verificaciones de spam
+     - Soporte por correo electrónico
+     - Retención personalizada
+     - Modelo de SpamCheck
+
+---
+
+### Planes de **OOPSpam**:
+
+**web**: https://www.oopspam.com
+1. **Freelance Plan**
+   - **Precio**: $40.83/mes (facturado anualmente)
+   - **Incluye**:
+     - 100,000 llamadas API
+     - Vigilancia de reputación de dominios
+     - API avanzada de protección contra spam
+     - API de reputación de dominios
+     - Sitios web ilimitados
+     - Política de no registro de logs
+     - Retención de logs (opcional): 3 meses
+
+2. **Agency Plan**
+   - **Precio**: $65.8/mes (facturado anualmente)
+   - **Incluye**:
+     - 300,000 llamadas API
+     - Vigilancia de reputación de dominios
+     - API avanzada de protección contra spam
+     - API de reputación de dominios
+     - Sitios web ilimitados
+     - Política de no registro de logs
+     - Retención de logs (opcional): 6 meses
+
+3. **Business Plan**
+   - **Precio**: $215.8/mes (facturado anualmente)
+   - **Incluye**:
+     - 1,000,000 llamadas API
+     - Vigilancia de reputación de dominios
+     - API avanzada de protección contra spam
+     - API de reputación de dominios
+     - Sitios web ilimitados
+     - Política de no registro de logs
+     - Retención de logs (opcional): 9 meses
+
+---
+## Documentación
+
+- **OOPSpam**: https://www.oopspam.com/docs
+- **SpamCheck**: https://spamcheck.ai/docs
+   - **General**: https://docs.spamcheck.ai
+   - **API**: https://app.spamcheck.ai/api_docs
+
+
+
+
+
+
+>>>>>>> 9e43856d8635b002eea2de1760fac657faec386d
