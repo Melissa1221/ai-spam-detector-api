@@ -17,10 +17,27 @@ export interface SpamCheckRequestBody {
     };
 }
 
+export interface SpamCheckAISimpleRequestBody {
+    title: string;
+    message: string;
+    from: string;
+}
+ 
 export class SpamCheckAIChecker extends SpamChecker {
-    async check(data: SpamCheckRequestBody): Promise<SpamCheckResult> {
+    async check(data: SpamCheckAISimpleRequestBody): Promise<SpamCheckResult> {
+        const apiRequestBody : SpamCheckRequestBody = {
+            email : data.from,
+            email_validation_method:'smtp',
+            body: {
+                first_name: '',
+                last_name: '',
+                email: data.from,
+                message: data.message
+            }
+
+        }
         try {
-            const response = await axios.post('https://api.spamcheck.ai/api/v1/spam/check', data, {
+            const response = await axios.post('https://api.spamcheck.ai/api/v1/spam/check', apiRequestBody, {
                 headers: {
                     'Api-Key': this.apiKey,
                     'Content-Type': 'application/json'

@@ -12,19 +12,30 @@ export interface OOPSpamRequestBody {
     blockedCountries?: string[];
 }
 
+export interface SimpleRequestBody {
+    title: string;
+    message: string;
+    from: string;
+}
+
+
 export class OOPSpamChecker extends SpamChecker {
-    async check(data: OOPSpamRequestBody): Promise<SpamCheckResult> {
+    async check(data: SimpleRequestBody): Promise<SpamCheckResult> {
+        const apiRequestBody: OOPSpamRequestBody = {
+            content: data.message,
+            email: data.from
+        }
         try {
             const response = await axios.post('https://api.oopspam.com/v1/spamdetection', {
-                ...data,
-                content: data.content || "Default content",
-                senderIP: data.senderIP || "91.203.67.110",
-                email: data.email || "testing@example.com",
-                blockTempEmail: data.blockTempEmail || false,
-                checkForLength: data.checkForLength || true,
-                allowedLanguages: data.allowedLanguages || ["en"],
-                allowedCountries: data.allowedCountries || ["us", "it"],
-                blockedCountries: data.blockedCountries || ["ru", "cn"]
+                ...apiRequestBody,
+                content: apiRequestBody.content || "Default content",
+                senderIP: apiRequestBody.senderIP || "91.203.67.110",
+                email: apiRequestBody.email || "testing@example.com",
+                blockTempEmail: apiRequestBody.blockTempEmail || false,
+                checkForLength: apiRequestBody.checkForLength || true,
+                allowedLanguages: apiRequestBody.allowedLanguages || ["en"],
+                allowedCountries: apiRequestBody.allowedCountries || ["us", "it"],
+                blockedCountries: apiRequestBody.blockedCountries || ["ru", "cn"]
             }, {
                 headers: {
                     'X-Api-Key': this.apiKey,
@@ -37,7 +48,7 @@ export class OOPSpamChecker extends SpamChecker {
                 details: response.data
             };
         } catch (error: any) {
-            console.error('Error al conectarse con la API de OOPSpam:', error.response ? error.response.data : error.message);
+            console.error('Error al conectarse con la API de OOPSpam:', error.response ? error.response.apiRequestBody : error.message);
             throw new Error('Error al conectarse con la API de OOPSpam');
         }
     }

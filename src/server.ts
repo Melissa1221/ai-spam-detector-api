@@ -17,20 +17,60 @@ if (!spamCheckApiKey || !oopSpamApiKey) {
 const spamCheckAIChecker = SpamCheckerFactory.createChecker('spamcheck.ai', spamCheckApiKey);
 const oopSpamChecker = SpamCheckerFactory.createChecker('oopspam', oopSpamApiKey);
 
+
+const testPayload = {
+    message: "Hi...",
+    from: "email@test.com",
+    title: "Urgent message"
+};
+
+
+// app.post('/check-spam', async (req: Request, res: Response) => {
+//     try {
+//         const spamCheckResult = await spamCheckAIChecker.check(req.body);
+//         const oopSpamResult = await oopSpamChecker.check(req.body);
+        
+//         res.json({
+//             spamCheckAI: spamCheckResult,
+//             oopSpam: oopSpamResult
+//         });
+//     } catch (error: any) {
+//         console.error('Error al verificar spam:', error.message);
+//         res.status(500).json({ error: 'Error al verificar spam' });
+//     }
+// });
+
 app.post('/check-spam', async (req: Request, res: Response) => {
     try {
-        const spamCheckResult = await spamCheckAIChecker.check(req.body);
-        const oopSpamResult = await oopSpamChecker.check(req.body);
-        
-        res.json({
-            spamCheckAI: spamCheckResult,
-            oopSpam: oopSpamResult
-        });
+        const payload = testPayload; 
+        console.log('Incoming payload:', payload);
+
+        const [spamCheckResult, oopSpamResult] = await Promise.all([
+            spamCheckAIChecker.check(payload),
+            oopSpamChecker.check(payload)
+        ]);
+
+    
+        const response = {
+            spamcheck: {
+                isSpam: spamCheckResult?.details?.content?.spam?.result || false
+            },
+            oopspam: {
+                isSpam: oopSpamResult?.details?.Score >= 5 
+            }
+        };
+
+        console.log('Processed spam check results:', response);
+        res.json(response);
     } catch (error: any) {
-        console.error('Error al verificar spam:', error.message);
-        res.status(500).json({ error: 'Error al verificar spam' });
+        console.error('Error checking spam:', error.message);
+        res.status(500).json({
+            error: 'An error occurred while checking spam',
+            details: error.message
+        });
     }
 });
+
 
 const PORT = process.env.PORT || 3000;
 

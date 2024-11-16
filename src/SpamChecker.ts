@@ -4,6 +4,9 @@ export interface SpamCheckResult {
     details?: any;
 }
 
+export interface SpamCheckSimpleResult{
+    isSpam: boolean;
+}
 export abstract class SpamChecker {
     protected apiKey: string;
 

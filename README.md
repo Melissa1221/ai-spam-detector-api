@@ -1,3 +1,6 @@
+### Actualización del README
+
+```markdown
 # README: Configuración y pruebas de APIs OOPSpam y SpamCheck con TypeScript
 
 ## Introducción
@@ -59,79 +62,52 @@ node dist/server.js
 
 Esto iniciará el servidor en el puerto 3000 (o el que hayas configurado). Ahora estará listo para recibir solicitudes POST en el endpoint configurado.
 
+---
 
 ## 3. Probar las APIs en Postman
 
 Una vez que el servidor esté en ejecución, puedes probar los endpoints usando **Postman**. A continuación, te muestro cómo hacerlo para cada API.
 
-### a. Pruebas de la API de **OOPSpam**
+---
+
+### a. Pruebas del endpoint `/check-spam`
+
+Este endpoint combina las evaluaciones de **OOPSpam** y **SpamCheck** para determinar si el mensaje enviado es spam.
 
 1. **URL del Endpoint**:
-   - Si usas OOPSpam directamente: `http://localhost:3000/oopspam/check`
-   - Si usas OOPSpam desde **RapidAPI**: `https://oopspam.p.rapidapi.com/v1/spamdetection`
+   - `http://localhost:3000/check-spam`
 
 2. **Headers**:
    - **Content-Type**: `application/json`
-   - **X-Api-Key** (o `X-Rapidapi-Key` para RapidAPI): Tu clave API de OOPSpam.
 
 3. **Cuerpo de prueba (JSON)**:
 ```json
 {
-    "senderIP": "185.234.219.246",
-    "email": "testing@example.com",
-    "content": "Dear Agent, We are a manufacturing company which specializes in supplying Aluminum Rod...",
-    "checkForLength": true,
-    "blockTempEmail": false,
-    "allowedLanguages": ["en"],
-    "allowedCountries": ["it", "us"],
-    "blockedCountries": ["ru"]
+    "message": "Hello Admin. my name is Eric and I’m betting you’d like your website to generate more leads...",
+    "from": "email@test.com",
+    "title": "Urgent message: You won!"
 }
 ```
 
-#### Explicación del cuerpo:
-- **senderIP**: (Opcional) Dirección IP del remitente que se validará en listas de bloqueo de IP.
-- **email**: (Opcional) Correo electrónico del remitente que se validará en listas de bloqueo de correos electrónicos.
-- **content**: (Requerido) El contenido que deseas analizar para spam.
-- **checkForLength**: Si está activado, considerará el contenido como spam si es muy corto.
-- **allowedLanguages**: Especifica los idiomas permitidos para el contenido.
-- **allowedCountries**: Especifica los países permitidos para el contenido.
-- **blockedCountries**: Lista de países bloqueados. Si el remitente está en alguno de estos países, será considerado spam.
+4. **Resultado esperado (Ejemplo):**
+   El servidor devolverá un resultado simplificado indicando si el mensaje es spam según cada API:
 
-### b. Pruebas de la API de **SpamCheck**
-
-1. **URL del Endpoint**:
-   - `http://localhost:3000/spamcheck/check`
-
-2. **Headers**:
-   - **Content-Type**: `application/json`
-   - **Api-Key**: Tu clave API de SpamCheck.
-
-3. **Cuerpo de prueba (JSON)**:
 ```json
 {
-    "ip": "89.22.235.226",
-    "email": "ericjonesmyemail@gmail.com",
-    "email_validation_method": "mx",
-    "body": {
-        "utm_source": "",
-        "utm_medium": "",
-        "utm_campaign": "",
-        "first_name": "Eric",
-        "last_name": "Jones",
-        "email": "ericjonesmyemail@gmail.com",
-        "phone": "555-555-1212",
-        "message": "Hello Admin. my name is Eric and I’m betting you’d like your website to generate more leads..."
+    "spamcheck": {
+        "isSpam": false
+    },
+    "oopspam": {
+        "isSpam": true
     }
 }
 ```
 
-#### Explicación del cuerpo:
-- **ip**: Dirección IP del remitente, que será validada.
-- **email**: El correo electrónico del remitente que será validado.
-- **email_validation_method**: Puedes usar `mx` para validar los registros MX del dominio o `smtp` para validar si el servidor de correo puede recibir mensajes.
-- **body**: Contiene información del remitente y el contenido del mensaje a analizar.
+---
 
-### Resultados esperados:
+## Conclusión
 
-Dependiendo del contenido enviado, las APIs te devolverán una respuesta JSON indicando si el mensaje es spam o no, y qué factores influyeron en la decisión.
+Este proyecto integra las APIs de **OOPSpam** y **SpamCheck** para evaluar contenido de mensajes en busca de spam. Con la configuración adecuada, puedes implementar un sistema robusto para proteger tus aplicaciones de contenido sospechoso.
 
+Para cualquier duda o problema, revisa los logs del servidor o los datos de respuesta de las APIs en Postman.
+```
