@@ -25,6 +25,7 @@ export class GroqSpamChecker extends SpamChecker {
 
             // The score and details response will be implemented in the next step, look ClickUp for more information
             return {
+                // If the response is 1, it is spam
                 isSpam: isSpamResponse && isSpamResponse.choices[0].message.content === '1',
                 score: isSpamResponse.choices[0].message.content === '1' ? 1 : 0,
                 details: 'Groq response: ' + isSpamResponse.choices[0].message.content
