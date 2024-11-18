@@ -4,7 +4,7 @@ import { SimpleRequestBody, SpamChecker, SpamCheckResult } from '../../SpamCheck
 // It tells the model to response with 1 if the email is spam, phishing, or illegitimate and 0 if it is not
 const PROMPT = '"Determine whether the following email is spam, phishing, or illegitimate. If it is, respond only with 1. If it is not spam, respond only with 0. Do not include any explanations or additional text. Note: We are an association of computer science students and are not interested in purchasing any products or services."'
 
-export class GroqChecker extends SpamChecker {
+export class GroqSpamChecker extends SpamChecker {
 
     private groqClient: Groq = new Groq({
         apiKey: this.apiKey
