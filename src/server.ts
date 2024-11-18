@@ -1,5 +1,5 @@
-import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
+import express, { Request, Response } from 'express';
 import { SpamCheckerFactory } from './SpamCheckerFactory';
 
 dotenv.config();
@@ -9,14 +9,15 @@ app.use(express.json());
 
 const spamCheckApiKey = process.env.SPAMCHECK_API_KEY;
 const oopSpamApiKey = process.env.OOPSPAM_API_KEY;
+const groqApiKey = process.env.GROQ_API_KEY;
 
-if (!spamCheckApiKey || !oopSpamApiKey) {
+if (!spamCheckApiKey || !oopSpamApiKey || !groqApiKey) {
     throw new Error("Faltan las claves API. Asegúrate de configurar el archivo .env correctamente.");
 }
 
 const spamCheckAIChecker = SpamCheckerFactory.createChecker('spamcheck.ai', spamCheckApiKey);
 const oopSpamChecker = SpamCheckerFactory.createChecker('oopspam', oopSpamApiKey);
-
+const groqSpamChecker = SpamCheckerFactory.createChecker('groq', groqApiKey);
 
 const testPayload = {
     message: "Hi...",
@@ -45,9 +46,10 @@ app.post('/check-spam', async (req: Request, res: Response) => {
         const payload = testPayload; 
         console.log('Incoming payload:', payload);
 
-        const [spamCheckResult, oopSpamResult] = await Promise.all([
+        const [spamCheckResult, oopSpamResult, groqSpamResult] = await Promise.all([
             spamCheckAIChecker.check(payload),
-            oopSpamChecker.check(payload)
+            oopSpamChecker.check(payload),
+            groqSpamChecker.check(payload)
         ]);
 
     
@@ -57,6 +59,9 @@ app.post('/check-spam', async (req: Request, res: Response) => {
             },
             oopspam: {
                 isSpam: oopSpamResult?.details?.Score >= 5 
+            },
+            groq: {
+                isSpam: groqSpamResult?.details?.spam || false
             }
         };
 

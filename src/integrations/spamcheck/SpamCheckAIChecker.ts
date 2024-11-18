@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SpamChecker, SpamCheckResult } from '../../SpamChecker';
+import { SimpleRequestBody, SpamChecker, SpamCheckResult } from '../../SpamChecker';
 
 export interface SpamCheckRequestBody {
     ip?: string;
@@ -17,14 +17,9 @@ export interface SpamCheckRequestBody {
     };
 }
 
-export interface SpamCheckAISimpleRequestBody {
-    title: string;
-    message: string;
-    from: string;
-}
- 
+
 export class SpamCheckAIChecker extends SpamChecker {
-    async check(data: SpamCheckAISimpleRequestBody): Promise<SpamCheckResult> {
+    async check(data: SimpleRequestBody): Promise<SpamCheckResult> {
         const apiRequestBody : SpamCheckRequestBody = {
             email : data.from,
             email_validation_method:'smtp',
