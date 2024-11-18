@@ -1,15 +1,14 @@
-
-# README: Configuración y pruebas de APIs OOPSpam y SpamCheck con TypeScript
+# README: Configuración y pruebas de APIs OOPSpam, SpamCheck y Groq con TypeScript
 
 ## Introducción
 
-Este proyecto implementa dos APIs para la detección de spam: **OOPSpam** y **SpamCheck**. Ambas APIs permiten detectar contenido sospechoso basado en direcciones IP, correos electrónicos y el contenido de mensajes.
+Este proyecto implementa dos APIs para la detección de spam: **OOPSpam**, **SpamCheck** y **Groq**. Ambas APIs permiten detectar contenido sospechoso basado en direcciones IP, correos electrónicos y el contenido de mensajes.
 
 ## Requisitos previos
 
-- **Node.js** v12 o superior
+- **Node.js** v20 o superior
 - **Postman** (para realizar pruebas de las APIs)
-- **Claves API** válidas para **OOPSpam** y **SpamCheck**
+- **Claves API** válidas para **OOPSpam**, **SpamCheck** y **Groq**.
 - **TypeScript** configurado en tu entorno de desarrollo
 
 ---
@@ -31,10 +30,12 @@ Crea un archivo `.env` en la raíz del proyecto, donde almacenarás tus claves A
 ```plaintext
 OOPSPAM_API_KEY=tu_oopspam_api_key
 SPAMCHECK_API_KEY=tu_spamcheck_api_key
+GROQ_API_KEY=tu_groq_api_key
 ```
 
 - **OOPSPAM_API_KEY**: Clave API de OOPSpam.
 - **SPAMCHECK_API_KEY**: Clave API de SpamCheck.
+- **GROQ_API_KEY**: Clave API de Groq.
 
 ### c. Transpilar el código TypeScript
 
@@ -106,6 +107,37 @@ Este endpoint combina las evaluaciones de **OOPSpam** y **SpamCheck** para deter
 
 ## Sección de precios
 
+### Planes de Groq
+
+### Planes de **Groq**:
+
+**web**: https://groq.com
+
+We use [Groq](https://groq.com) as our AI provider due to its excellent inference performance and current free beta access. While in beta, consider the following pricing estimates:
+
+- Model used: **Llama 3.2 1B (Preview) 8k**
+- Cost: *$0.04* per million tokens
+- Average email check: 2000 tokens
+- Worst case scenario (100 emails/day): 200,000 tokens
+
+### Estimated costs
+
+In the worst case
+
+- Daily: $0.008
+- Monthly: $0.024
+
+### Important considerations
+
+1. Groq has [consumption limits](https://console.groq.com/settings/limits)
+2. Each Gmail request is processed individually
+3. To optimize token usage:
+   - Send only relevant email content
+   - Remove HTML formatting
+   - Include only text that helps determine spam status
+
+Remember to monitor Groq API limits and adjust email processing accordingly.
+
 ### Planes de **SpamCheck**:
 **web**: https://spamcheck.ai
 
@@ -170,3 +202,6 @@ Este endpoint combina las evaluaciones de **OOPSpam** y **SpamCheck** para deter
 - **SpamCheck**: https://spamcheck.ai/docs
    - **General**: https://docs.spamcheck.ai
    - **API**: https://app.spamcheck.ai/api_docs
+- **Groq**: https://console.groq.com/docs/overview
+   - **API_KEY**: https://console.groq.com/keys
+   - **Limits**: https://console.groq.com/settings/limits
