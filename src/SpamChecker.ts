@@ -1,3 +1,9 @@
+export interface SimpleRequestBody {
+    title: string;
+    message: string;
+    from: string;
+}
+
 export interface SpamCheckResult {
     isSpam: boolean;
     score?: number;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SpamChecker, SpamCheckResult } from '../../SpamChecker';
+import { SimpleRequestBody, SpamChecker, SpamCheckResult } from '../../SpamChecker';
 
 export interface OOPSpamRequestBody {
     content?: string;
@@ -10,12 +10,6 @@ export interface OOPSpamRequestBody {
     allowedLanguages?: string[];
     allowedCountries?: string[];
     blockedCountries?: string[];
-}
-
-export interface SimpleRequestBody {
-    title: string;
-    message: string;
-    from: string;
 }
 
 
